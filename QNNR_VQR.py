@@ -2,35 +2,31 @@
 # Variational Quantum Regressor (VQR)
 
 """
-Loto Skraceni Sistemi 
+| Paket                       | Verzija |
+| --------------------------- | ------- |
+| **python**                  | 3.11.13 |
+| **qiskit**                  | 1.4.4   |
+| **qiskit-machine-learning** | 0.8.3   |
+| **qiskit-ibm-runtime**      | 0.43.0  |
+| **macOS**                   | Tahos   |
+| **Apple**                   | M1      |
+"""
+
+"""
+https://github.com/forsing
+https://github.com/forsing?tab=repositories
+"""
+
+"""
+Loto Skraceni Sistemi
 https://www.lotoss.info
 ABBREVIATED LOTTO SYSTEMS
 """
 
-import numpy as np
-import pandas as pd
-
-import matplotlib.pyplot as plt
-
-from qiskit import QuantumCircuit
-from qiskit_aer import AerSimulator
-
-from qiskit.visualization import circuit_drawer
-
-from IPython.display import display
-from IPython.display import clear_output
-
-
-from qiskit_machine_learning.utils import algorithm_globals
-import random
-
-# =========================
-# Seed za reproduktivnost
-# =========================
-SEED = 39
-np.random.seed(SEED)
-random.seed(SEED)
-algorithm_globals.random_seed = SEED
+"""
+svih 4512 izvlacenja
+30.07.1985.- 14.11.2025.
+"""
 
 
 from qiskit import QuantumCircuit
