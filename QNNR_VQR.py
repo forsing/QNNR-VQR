@@ -219,13 +219,8 @@ print()
 """
 NN=10
 === Predvidjena QNNR sledeca loto kombinacija (7) ===
-1 5 8 10 13 26 33
-
-
-NN=4512
-
+1 5 x x x 26 33
 """
-
 
 
 # =========================
@@ -259,13 +254,12 @@ def main():
     """
     NN=10
     === Predviđena VQR sledeca loto kombinacija (7) ===
-    2 9 12 15 18 29 35
+    2 9 x x x 29 35
 
     NN=4512
     === Predviđena VQR sledeca loto kombinacija (7) ===
-    3 4 5 7 8 11 14
+    3 4 x x x 11 14
     """
-
 
 if __name__ == "__main__":
     main()
