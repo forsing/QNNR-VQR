@@ -1,6 +1,38 @@
 # Quantum Neural Network Regressor (QNN Regressor)
 # Variational Quantum Regressor (VQR)
 
+"""
+Loto Skraceni Sistemi 
+https://www.lotoss.info
+ABBREVIATED LOTTO SYSTEMS
+"""
+
+import numpy as np
+import pandas as pd
+
+import matplotlib.pyplot as plt
+
+from qiskit import QuantumCircuit
+from qiskit_aer import AerSimulator
+
+from qiskit.visualization import circuit_drawer
+
+from IPython.display import display
+from IPython.display import clear_output
+
+
+from qiskit_machine_learning.utils import algorithm_globals
+import random
+
+# =========================
+# Seed za reproduktivnost
+# =========================
+SEED = 39
+np.random.seed(SEED)
+random.seed(SEED)
+algorithm_globals.random_seed = SEED
+
+
 from qiskit import QuantumCircuit
 from qiskit.circuit.library import ZZFeatureMap, RealAmplitudes, EfficientSU2
 from qiskit_aer import Aer
