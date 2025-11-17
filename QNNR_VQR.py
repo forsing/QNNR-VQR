@@ -28,15 +28,14 @@ svih 4512 izvlacenja
 30.07.1985.- 14.11.2025.
 """
 
-
 from qiskit import QuantumCircuit
-from qiskit.circuit.library import ZZFeatureMap, RealAmplitudes, EfficientSU2
+from qiskit.circuit.library import ZZFeatureMap, RealAmplitudes
 from qiskit_aer import Aer
 from qiskit_machine_learning.algorithms import VQR
 from qiskit_machine_learning.algorithms import NeuralNetworkRegressor
 from qiskit_machine_learning.neural_networks import EstimatorQNN
 from qiskit.primitives import StatevectorEstimator
-from qiskit_algorithms.optimizers import COBYLA, L_BFGS_B
+from qiskit_algorithms.optimizers import COBYLA, SPSA
 from qiskit_machine_learning.utils import algorithm_globals
 
 import numpy as np
@@ -44,10 +43,10 @@ import pandas as pd
 import random
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import accuracy_score
 import matplotlib.pyplot as plt
 
 from qiskit_machine_learning.optimizers import GradientDescent
+
 
 # =========================
 # Seed za reproduktivnost
@@ -146,9 +145,9 @@ plt.show()
 ansatz.decompose().draw('mpl')
 plt.show()
 
-# VQR optimizatori
+# VQC i VQR optimizatori
 init = 0.05*np.ones(ansatz.num_parameters)
-optimizer = COBYLA(maxiter=300)
+optimizer = COBYLA(maxiter=300, tol=1e-6)
 
 
 vqr = VQR(
@@ -184,7 +183,7 @@ def build_qnn_regressor(X_train, y_train):
     regressor = NeuralNetworkRegressor(
         neural_network=qnn,
         loss="squared_error",
-        optimizer=L_BFGS_B(maxiter=10)
+        optimizer = SPSA(maxiter=300)
     )
 
 
@@ -217,9 +216,8 @@ print(" ".join(str(num) for num in predicted_combination))
 print()
 print()
 """
-NN=10
 === Predvidjena QNNR sledeca loto kombinacija (7) ===
-1 5 x x x 26 33
+11 14 x x x 20 22
 """
 
 
@@ -227,12 +225,13 @@ NN=10
 # Main
 # =========================
 def main():
-
+    
     # Train VQR regressor za 7 brojeva
     print("Training Variational Quantum Regressor ...")
     for i in range(7):
         vqr.fit(X_train_s, y_train_x_all[:,i])
     print("VQR training completed.")
+    
     """
     Training Variational Quantum Regressor ...
     VQR training completed.
@@ -252,14 +251,10 @@ def main():
     print()
     print()
     """
-    NN=10
-    === Predviđena VQR sledeca loto kombinacija (7) ===
-    2 9 x x x 29 35
-
-    NN=4512
     === Predviđena VQR sledeca loto kombinacija (7) ===
     3 4 x x x 11 14
     """
+
 
 if __name__ == "__main__":
     main()
