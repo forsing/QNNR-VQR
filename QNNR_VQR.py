@@ -32,7 +32,6 @@ svih 4512 izvlacenja
 from qiskit import QuantumCircuit
 from qiskit.circuit.library import ZZFeatureMap, RealAmplitudes, EfficientSU2
 from qiskit_aer import Aer
-from qiskit_machine_learning.algorithms.classifiers import VQC
 from qiskit_machine_learning.algorithms import VQR
 from qiskit_machine_learning.algorithms import NeuralNetworkRegressor
 from qiskit_machine_learning.neural_networks import EstimatorQNN
@@ -61,7 +60,7 @@ algorithm_globals.random_seed = SEED
 # =========================
 # Load Loto data
 # =========================
-df = pd.read_csv("/Users/milan/Desktop/GHQ/data/loto7_4512_k90.csv", header=None)
+df = pd.read_csv("/data/loto7_4512_k90.csv", header=None)
 
 print()
 print("Prvih 5 kombinacija:")
@@ -147,7 +146,7 @@ plt.show()
 ansatz.decompose().draw('mpl')
 plt.show()
 
-# VQC i VQR optimizatori
+# VQR optimizatori
 init = 0.05*np.ones(ansatz.num_parameters)
 optimizer = COBYLA(maxiter=300)
 
@@ -203,7 +202,7 @@ print()
 QNN Regressor built and trained ✅
 """
 
-# Predikcija VQR sledece kombinacije
+# Predikcija QNNR sledece kombinacije
 X_last_scaled = scaler_X.transform(df_indexed.values[-1].reshape(1,-1))
 predicted_combination = []
 for i in range(7):
