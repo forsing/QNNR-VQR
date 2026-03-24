@@ -28,13 +28,11 @@ ABBREVIATED LOTTO SYSTEMS
 """
 
 """
-svih 4512 izvlacenja
-30.07.1985.- 14.11.2025.
+svih 4584 izvlacenja
+30.07.1985.- 20.03.2026.
 """
 
-"""
-v2: samo CSV GHQ loto7_4584_k23 + crteži u QNNR_VQR_v2_out (Agg); isti tok kao QNNR_VQR.py.
-"""
+
 
 from qiskit import QuantumCircuit
 from qiskit.circuit.library import ZZFeatureMap, RealAmplitudes
@@ -72,7 +70,7 @@ algorithm_globals.random_seed = SEED
 # =========================
 # Load Loto data
 # =========================
-df = pd.read_csv("/data/loto7_4512_k90.csv", header=None)
+df = pd.read_csv("/data/loto7_4584_k23.csv", header=None)
 
 print()
 print("Prvih 5 kombinacija:")
@@ -283,8 +281,8 @@ python3 QNNR_VQR_v2.py
 
 """
 === Predvidjena QNNR sledeca loto kombinacija (7) ===
-3 5 5 9 12 14 17
+3 x y 9 12 14 z
 
 === Predvidjena VQR sledeca loto kombinacija (7) ===
-1 2 3 6 7 11 15
+1 x y 6 7 11 z
 """
